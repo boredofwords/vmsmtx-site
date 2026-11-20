@@ -4,7 +4,7 @@
   --red: #cf4438;
   --silver: #aaa9a5;
   --line: rgba(240, 238, 231, 0.76);
-  --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --display: Impact, "SMTX Condensed", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --serif: Georgia, "Times New Roman", serif;
 }
 
@@ -88,7 +88,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero::before { content: ""; position: absolute; left: -2rem; top: 12%; width: 1px; height: 76%; background: linear-gradient(transparent, var(--line) 10% 90%, transparent); }
 .hero::after { content: "✦"; position: absolute; left: calc(-2rem - 8px); top: 11%; color: var(--paper); }
 .eyebrow { margin: 0 0 1.15rem; text-transform: uppercase; font: 800 .78rem/1.2 Arial, sans-serif; letter-spacing: .22em; color: var(--silver); }
-.hero-copy { position: relative; z-index: 1; }
+.hero-copy { position: relative; z-index: 1; min-width: 0; }
 .hero h1 {
   margin: 0;
   max-width: 800px;
@@ -110,6 +110,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-transform: none;
   transform: translate(.5rem, -.35rem) rotate(-5deg);
 }
+.hero-last-line { display: inline-block; font-weight: inherit; white-space: nowrap; }
 .hero-line { margin: 3.2rem 0 1.4rem; color: var(--red); font: 900 clamp(1.05rem, 2vw, 1.35rem)/1 var(--display); letter-spacing: .09em; }
 .hero-line b { color: var(--paper); margin: 0 .45rem; font-size: .7em; }
 .hero-intro { max-width: 570px; margin: 0; color: #d2d0ca; font: 400 clamp(1rem, 1.6vw, 1.15rem)/1.65 Arial, sans-serif; }
@@ -219,6 +220,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-self: center;
 }
 .shirt-copy h2 span { color: var(--red); }
+.shirt-copy h2 .tshirt-word { white-space: nowrap; }
 .shirt-mockup {
   grid-column: 2;
   grid-row: 1;
@@ -274,8 +276,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-nav { display: none; position: absolute; top: 78px; left: 0; right: 0; z-index: 10; flex-direction: column; gap: 0; padding: 1rem; background: var(--ink); border: 1px solid var(--line); }
   .site-nav.is-open { display: flex; }
   .site-nav a { padding: 1rem; border-bottom: 1px solid rgba(240,238,231,.18); }
-  .hero { width: min(100% - 2rem, 700px); grid-template-columns: 1fr; min-height: 0; padding: 4.5rem 0 6rem; }
-  .hero h1 { font-size: clamp(4.1rem, 17vw, 7.8rem); }
+  .hero { width: min(100% - 2rem, 700px); grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 4.5rem 0 6rem; }
+  .hero h1 { font-size: var(--fit-title, min(10vw, 5rem)); }
   .poster-frame { width: min(90%, 520px); justify-self: center; }
   .hero-mark { display: none; }
   .manifesto { grid-template-columns: 1fr; }
@@ -305,6 +307,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .manifesto-copy { grid-column: 1; }
   .show-section { width: calc(100% - 2rem); }
   .shirt-section { width: calc(100% - 2rem); }
+  .shirt-copy h2 { font-size: clamp(2.2rem, 13.5vw, 4rem); }
   .details dl div { grid-template-columns: 90px 1fr; }
   .site-footer { width: calc(100% - 2rem); flex-direction: column; justify-content: center; text-align: center; padding: 2rem 0; }
 }
@@ -312,4 +315,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+}
+@font-face {
+  font-family: "SMTX Condensed";
+  src: url("open-sans-condensed-bold.woff") format("woff");
+  font-weight: 700 900;
+  font-display: swap;
 }
